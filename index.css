@@ -1,26 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Quattrocento&display=swap');
+
 body {
     margin: 0;
     padding: 0;
-    background-image: url(img/backgroud.jpg);
-    background-size: 100% 100%;
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* Garante que o body ocupe toda a altura da janela */
+    overflow-x: hidden;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./background.jpg');
+    background-size: cover; /* Ajusta a imagem para cobrir toda a área */
     background-repeat: no-repeat;
+    opacity: 0.15; /* Ajuste a opacidade conforme necessário */
+    z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
 }
 
 .navbar {
+    background-color: black;
     height: 80px;
     overflow: hidden;
     top: 0;
     display: flex;
     align-items: center;
-    background: #f0f0f0;
     width: 100%;
     box-shadow: 10px black;
 }
 
 .logo {
-    background-color: #006400ab;
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./logo.png');
     width: 140px;
     height: 100%;
     float: left;
@@ -28,28 +45,41 @@ body {
     text-align: center;
 }
 
-.logo h1 {
-    color: #ffff;
-}
-
 .menu {
+    font-family: 'Oswald', sans-serif;
     position: absolute;
     right: 55px;
 }
 
 .menu a {
-    color: #333;
+    color: #ffd100;
     text-decoration: none;
     font-weight: 700;
     margin-left: 20px;
-    transition: color 0.3s;
+    transition: color 0.3s, border-bottom 0.3s;
     text-transform: uppercase;
+    position: relative; /* Necessário para o pseudo-elemento ::after */
+}
 
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    background: #ffd100;
+    transition: width 0.3s;
+    left: 0;
+    bottom: -5px; /* Ajusta a posição do sublinhado */
 }
 
 .menu a:hover {
-    color: #6ab04c;
+    color: #fff4c4;
+}
 
+.menu a:hover::after {
+    width: 100%;
+    background: #bb9c10; /* Mudança de cor do sublinhado no hover */
 }
 
 .btn {
@@ -58,7 +88,7 @@ body {
     right: 20px;
 }
 
-.btn:hover>span {
+.btn:hover > span {
     background: #6ab04c;
 }
 
@@ -70,3 +100,131 @@ body {
     background: #333;
 }
 
+h1 {
+    font-family: 'Oswald', sans-serif;
+}
+
+p {
+    font-family: 'Quattrocento', serif;
+}
+
+.section_a {
+    background-color: #ffd100;
+    border-radius: 1cm;
+    padding: 3%;
+}
+
+.section_b {
+    width: 100vw;
+    background-color: #ffd100;
+    border-radius: 1cm;
+    padding: 3%;
+    font-size: 1em;
+}
+
+.section_imgc {
+    width: 100vh; /* Ajusta o contêiner para ocupar 100% da largura disponível */
+    text-align: center; /* Centraliza a imagem dentro do contêiner */
+}
+
+.section_imgc img {
+    max-width: 60vh; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.section_imgb {
+    width: 100vh; /* Ajusta o contêiner para ocupar 100% da largura disponível */
+    text-align: center; /* Centraliza a imagem dentro do contêiner */
+}
+
+.section_imgb img {
+    position: absolute;
+    top: -35%;
+    left: -0%;
+    max-width: 60vh; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.section_imgd {
+    width: 100vh; /* Ajusta o contêiner para ocupar 100% da largura disponível */
+    text-align: center; /* Centraliza a imagem dentro do contêiner */
+}
+
+.section_imgd img {
+    position: absolute;
+    top: 20%;
+    left: -0%;
+    max-width: 33vw; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.section_imge {
+    width: 100vh; /* Ajusta o contêiner para ocupar 100% da largura disponível */
+    text-align: center; /* Centraliza a imagem dentro do contêiner */
+}
+
+.section_imge img {
+    position: absolute;
+    top: -30%;
+    left: 5%;
+    max-width: 25vw; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.sidea {
+    margin-left: 2vw;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.sidea p {
+    transition: 0.2s;
+}
+
+.sidea p::after {
+    content: '';
+    position: relative;
+    width: 0;
+    height: 2px;
+    display: block;
+    background: rgb(151, 123, 0);
+    transition: width 0.7s;
+    left: -1px;
+    bottom: -25px; /* Ajusta a posição do sublinhado */
+}
+
+.sidea p:hover {
+    color: #66560c;
+}
+
+.sidea p:hover::after  {
+    width: 100%;
+    background: rgb(151, 123, 0); /* Mudança de cor do sublinhado no hover */
+}
+
+/* Fade-in Effect */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    margin-top: 3vh;
+    text-align: center;
+    padding: 20px;
+    background-color: #000000;
+    color: #fff;
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+}

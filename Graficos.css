@@ -1,65 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Quattrocento&display=swap');
+
 body {
     margin: 0;
     padding: 0;
-    background-image: url(img/backgroud.jpg) ;
-    background-size:100% 100% ;
-    background-repeat:no-repeat ;
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* Garante que o body ocupe toda a altura da janela */
+    overflow-x: hidden;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./background.jpg');
+    background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+    background-repeat: no-repeat;
+    opacity: 0.15; /* Ajuste a opacidade conforme necessário */
+    z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
 }
 
 .navbar {
+    background-color: black;
     height: 80px;
     overflow: hidden;
     top: 0;
     display: flex;
     align-items: center;
-    background:   #f0f0f0;
     width: 100%;
-    box-shadow: 10px black ;
+    box-shadow: 10px black;
 }
-.logo{
-    background-color: #006400ab;
+
+.logo {
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./logo.png');
     width: 140px;
     height: 100%;
     float: left;
     margin-left: 60px;
     text-align: center;
 }
-.logo h1 {
-    color: #ffff;
-}
-.menu{
+
+.menu {
+    font-family: 'Oswald', sans-serif;
     position: absolute;
     right: 55px;
 }
-.menu a{
-    color: #333;
+
+.menu a {
+    color: #ffd100;
     text-decoration: none;
     font-weight: 700;
     margin-left: 20px;
-    transition: color 0.3s;
+    transition: color 0.3s, border-bottom 0.3s;
     text-transform: uppercase;
-
+    position: relative; /* Necessário para o pseudo-elemento ::after */
 }
-.menu a:hover{
-    color: #6ab04c;
 
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    background: #ffd100;
+    transition: width 0.3s;
+    left: 0;
+    bottom: -5px; /* Ajusta a posição do sublinhado */
 }
-.btn{
+
+.menu a:hover {
+    color: #fff4c4;
+}
+
+.menu a:hover::after {
+    width: 100%;
+    background: #bb9c10; /* Mudança de cor do sublinhado no hover */
+}
+
+.btn {
     display: none;
     position: absolute;
     right: 20px;
 }
-.btn:hover > span{
-    background: #6ab04c ;
+
+.btn:hover > span {
+    background: #ffe600;
 }
-.btn span{
+
+.btn span {
     display: block;
     margin: 6px;
     width: 40px;
     height: 3px;
-    background: #333;
+    background: #ac8401;
 }
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+}
+
+p {
+    font-family: 'Quattrocento', serif;
+}
+
 .grafic_cont {
     width: 42%; 
     display: inline-block;
